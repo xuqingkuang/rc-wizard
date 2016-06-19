@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rc-wizard by xuqingkuang</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rc-wizard</h1>
+        <p>React wizard component</p>
+
+        <p class="view"><a href="https://github.com/xuqingkuang/rc-wizard">View the Project on GitHub <small>xuqingkuang/rc-wizard</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/xuqingkuang/rc-wizard/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/xuqingkuang/rc-wizard/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/xuqingkuang/rc-wizard">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="rc-wizard" class="anchor" href="#rc-wizard" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>rc-wizard</h1>
+
+<hr>
+
+<p>React Wizard Component</p>
+
+<p><a href="http://npmjs.org/package/rc-wizard"><img src="http://img.shields.io/npm/v/rc-wizard.svg?style=flat-square" alt="NPM version"></a>
+<a href="https://travis-ci.org/xuqingkuang/rc-wizard"><img src="https://img.shields.io/travis/xuqingkuang/rc-wizard.svg?style=flat-square" alt="build status"></a>
+<a href="https://coveralls.io/r/xuqingkuang/rc-wizard?branch=master"><img src="https://img.shields.io/coveralls/xuqingkuang/rc-wizard.svg?style=flat-square" alt="Test coverage"></a>
+<a href="https://gemnasium.com/xuqingkuang/rc-wizard"><img src="http://img.shields.io/gemnasium/xuqingkuang/rc-wizard.svg?style=flat-square" alt="gemnasium deps"></a>
+<a href="https://npmjs.org/package/rc-wizard"><img src="https://img.shields.io/npm/dm/rc-wizard.svg?style=flat-square" alt="npm download"></a></p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development</h2>
+
+<pre><code>npm install
+npm start
+</code></pre>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
+
+<p>http://localhost:8000/examples/</p>
+
+<p>online example: <a href="http://xuqingkuang.github.io/rc-wizard/">http://xuqingkuang.github.io/rc-wizard/</a></p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>install</h2>
+
+<p><a href="https://npmjs.org/package/rc-wizard"><img src="https://nodei.co/npm/rc-wizard.png" alt="rc-wizard"></a></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">React</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">Wizard</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>rc-wizard<span class="pl-pds">'</span></span>;
+<span class="pl-k">const</span> <span class="pl-c1">Test</span> <span class="pl-k">=</span> () <span class="pl-k">=&gt;</span> {
+  <span class="pl-k">return</span> (
+    <span class="pl-k">&lt;</span>Wizard id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span> onDone<span class="pl-k">=</span>{() <span class="pl-k">=&gt;</span> { <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>Wizard is done<span class="pl-pds">'</span></span>); }}<span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span> key<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        I am the first page.
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span><span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span> key<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        I am the second page.
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span><span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span> key<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        I am the third page.
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">Wizard</span>.<span class="pl-smi">Step</span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>Wizard<span class="pl-k">&gt;</span>
+  )
+}
+<span class="pl-smi">React</span>.<span class="pl-en">render</span>(<span class="pl-k">&lt;</span>Test <span class="pl-k">/</span><span class="pl-k">&gt;</span>, container);</pre></div>
+
+<h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a id="wizard-class-props" class="anchor" href="#wizard-class-props" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wizard class props</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>default</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>String</td>
+      <td></td>
+      <td>Absolute identification</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>String</td>
+      <td>wizard</td>
+      <td>additional css class of root dom node</td>
+    </tr>
+    <tr>
+      <td>displayKey</td>
+      <td>String</td>
+      <td></td>
+      <td>The key will be displayed by default</td>
+    </tr>
+    <tr>
+      <td>onDone</td>
+      <td>Function</td>
+      <td></td>
+      <td>Callback when the wizard is completed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>
+<a id="wizardstep-class-props" class="anchor" href="#wizardstep-class-props" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wizard.Step class props</h3>
+
+<table>
+  <thead>
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>default</th>
+        <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>onPrevious</td>
+      <td>Function</td>
+      <td></td>
+      <td>Callback for previous button clicked</td>
+    </tr>
+    <tr>
+      <td>onNext</td>
+      <td>Function</td>
+      <td></td>
+      <td>Callback for next button clicked</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>
+<a id="test-case" class="anchor" href="#test-case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Case</h2>
+
+<pre><code>npm test
+npm run chrome-test
+</code></pre>
+
+<h2>
+<a id="coverage" class="anchor" href="#coverage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Coverage</h2>
+
+<pre><code>npm run coverage
+</code></pre>
+
+<p>open coverage/ dir</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>rc-wizard is released under the MIT license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/xuqingkuang">xuqingkuang</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
