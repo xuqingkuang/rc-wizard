@@ -1,0 +1,54 @@
+{
+  "name": "rc-wizard",
+  "version": "1.0.0",
+  "description": "React wizard",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-wizard",
+    "rc-wizard",
+    "wizard"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "homepage": "https://github.com/xuqingkuang/rc-wizard",
+  "author": "x@kxq.io",
+  "repository": "xuqingkuang/rc-wizard",
+  "bugs": "https://github.com/xuqingkuang/rc-wizard/issues",
+  "files": [
+    "lib",
+    "assets/*.css"
+  ],
+  "license": "MIT",
+  "main": "./lib/index",
+  "config": {
+    "port": 8000
+  },
+  "scripts": {
+    "build": "rc-tools run build",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-tools run server",
+    "pub": "rc-tools run pub",
+    "lint": "rc-tools run lint",
+    "karma": "rc-tools run karma",
+    "saucelabs": "rc-tools run saucelabs",
+    "test": "rc-tools run test",
+    "chrome-test": "rc-tools run chrome-test",
+    "coverage": "rc-tools run coverage"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.x",
+    "pre-commit": "1.x",
+    "rc-tools": "^5.5.9",
+    "react": "^15.1.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "object-assign": "^4.1.0"
+  }
+}
