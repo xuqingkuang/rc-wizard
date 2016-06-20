@@ -1,6 +1,6 @@
 {
   "name": "rc-wizard",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "React wizard",
   "keywords": [
     "react",
@@ -37,6 +37,9 @@
     "chrome-test": "rc-tools run chrome-test",
     "coverage": "rc-tools run coverage"
   },
+  "dependencies": {
+    "object-assign": "^4.1.0"
+  },
   "devDependencies": {
     "expect.js": "0.3.x",
     "pre-commit": "1.x",
@@ -47,8 +50,5 @@
   },
   "pre-commit": [
     "lint"
-  ],
-  "dependencies": {
-    "object-assign": "^4.1.0"
-  }
+  ]
 }

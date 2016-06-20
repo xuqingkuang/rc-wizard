@@ -5,21 +5,12 @@ React Wizard Component
 
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
-[![gemnasium deps][gemnasium-image]][gemnasium-url]
+[![Dependency Status](https://david-dm.org/xuqingkuang/rc-wizard.svg)](https://david-dm.org/xuqingkuang/rc-wizard)
+[![devDependency Status](https://david-dm.org/xuqingkuang/rc-wizard/dev-status.svg)](https://david-dm.org/xuqingkuang/rc-wizard#info=devDependencies)
 [![npm download][download-image]][download-url]
 
 [npm-image]: http://img.shields.io/npm/v/rc-wizard.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rc-wizard
-[travis-image]: https://img.shields.io/travis/xuqingkuang/rc-wizard.svg?style=flat-square
-[travis-url]: https://travis-ci.org/xuqingkuang/rc-wizard
-[coveralls-image]: https://img.shields.io/coveralls/xuqingkuang/rc-wizard.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/xuqingkuang/rc-wizard?branch=master
-[gemnasium-image]: http://img.shields.io/gemnasium/xuqingkuang/rc-wizard.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/xuqingkuang/rc-wizard
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[node-url]: http://nodejs.org/download/
 [download-image]: https://img.shields.io/npm/dm/rc-wizard.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rc-wizard
 
