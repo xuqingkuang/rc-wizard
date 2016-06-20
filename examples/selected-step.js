@@ -1,7 +1,7 @@
 // use jsx to render html, do not modify simple.html
 
 import Wizard from 'rc-wizard';
-import React, { Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Test = () => {
@@ -21,7 +21,7 @@ const Test = () => {
         I'm the third page.
       </Wizard.Step>
     </Wizard>
-  )
-}
+  );
+};
 
 ReactDOM.render(<Test />, document.getElementById('__react-content'));

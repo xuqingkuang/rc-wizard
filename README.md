@@ -64,7 +64,7 @@ const Test = () => {
     </Wizard>
   )
 }
-React.render(<Test />, container);
+React.render(<Test />, document.getElementById('container'));
 ```
 
 ## API
@@ -120,6 +120,12 @@ React.render(<Test />, container);
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>key</td>
+      <td>String</td>
+      <td></td>
+      <td>Required, unique "key" prop</td>
+    </tr>
     <tr>
       <td>onPrevious</td>
       <td>Function</td>

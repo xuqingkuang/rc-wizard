@@ -1,13 +1,13 @@
 import objectAssign from 'object-assign';
 import React, { Component, PropTypes } from 'react';
-import {PreviousButton, NextButton, DoneButton} from './Buttons';
+import { PreviousButton, NextButton, DoneButton } from './Buttons';
 import Locale from './locale/zh_CN';
 
 export default class Step extends Component {
 
   static defaultProps = {
     locale: Locale,
-    displayKey: undefined
+    displayKey: undefined,
   };
 
   renderButtons() {
@@ -17,7 +17,7 @@ export default class Step extends Component {
       isLast,
       onPrevious,
       onNext,
-      onDone
+      onDone,
     } = this.props;
     const previousButton = (
       <PreviousButton
@@ -33,7 +33,7 @@ export default class Step extends Component {
         locale={locale}
         onClick={onNext}
       />
-    )
+    );
 
     const doneButton = (
       <DoneButton
@@ -41,41 +41,41 @@ export default class Step extends Component {
         locale={locale}
         onClick={onDone}
       />
-    )
+    );
 
-    var buttons = [];
+    let buttons = [];
     if (isFirst && isLast) {
       buttons = [
-        doneButton
-      ]
+        doneButton,
+      ];
     } else if (isFirst && !isLast) {
       buttons = [
-        nextButton
-      ]
+        nextButton,
+      ];
     } else if (!isFirst && !isLast) {
       buttons = [
         previousButton,
-        nextButton
-      ]
+        nextButton,
+      ];
     } else if (!isFirst && isLast) {
       buttons = [
         previousButton,
-        doneButton
-      ]
+        doneButton,
+      ];
     }
 
     return (
       <div className="buttons-container">
         {buttons}
       </div>
-    )
+    );
   }
 
   render() {
     const { displayKey, children } = this.props;
-    var style = {display: 'none'};
-    if (displayKey === this.props.oldKey) {
-      style = {display: 'block'};
+    let style = { display: 'none' };
+    if (displayKey === this.props.orignalKey) {
+      style = { display: 'block' };
     }
     style = objectAssign(style, this.props.style);
     return (
@@ -86,6 +86,19 @@ export default class Step extends Component {
           this.renderButtons()
         }
       </div>
-    )
+    );
   }
 }
+
+Step.propTypes = {
+  children: PropTypes.element.isRequired,
+  style: PropTypes.object.isRequired,
+  locale: PropTypes.object.isRequired,
+  orignalKey: PropTypes.string.isRequired,
+  displayKey: PropTypes.string.isRequired,
+  isFirst: PropTypes.bool,
+  isLast: PropTypes.bool,
+  onPrevious: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onDone: PropTypes.func.isRequired,
+};

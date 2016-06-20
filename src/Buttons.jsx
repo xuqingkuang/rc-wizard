@@ -8,8 +8,8 @@ export const PreviousButton = ({ locale, onClick }) => {
     >
       {locale.previous}
     </button>
-  )
-}
+  );
+};
 
 export const NextButton = ({ locale, onClick }) => {
   return (
@@ -19,8 +19,8 @@ export const NextButton = ({ locale, onClick }) => {
     >
       {locale.next}
     </button>
-  )
-}
+  );
+};
 
 export const DoneButton = ({ locale, onClick }) => {
   return (
@@ -30,5 +30,5 @@ export const DoneButton = ({ locale, onClick }) => {
     >
       {locale.done}
     </button>
-  )
-}
+  );
+};
