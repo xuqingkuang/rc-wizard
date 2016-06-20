@@ -782,7 +782,7 @@ npm start</code></pre></div><h2>Example<a id="user-content-example" name="exampl
     <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard</span>&gt;</span>
   )</span>
 }
-React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Test</span> /&gt;</span>, container);</span></code></pre></div><h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>Wizard class props<a id="user-content-wizard-class-props" name="wizard-class-props" class="anchor" aria-hidden="true" href="#wizard-class-props"><span class="octicon octicon-link"></span></a></h3><table class="table table-bordered table-striped">
+React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Test</span> /&gt;</span>, document.getElementById('container'));</span></code></pre></div><h2>API<a id="user-content-api" name="api" class="anchor" aria-hidden="true" href="#api"><span class="octicon octicon-link"></span></a></h2><h3>Wizard class props<a id="user-content-wizard-class-props" name="wizard-class-props" class="anchor" aria-hidden="true" href="#wizard-class-props"><span class="octicon octicon-link"></span></a></h3><table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">name</th>
@@ -829,6 +829,12 @@ React.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-titl
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>key</td>
+      <td>String</td>
+      <td></td>
+      <td>Required, unique &quot;key&quot; prop</td>
+    </tr>
     <tr>
       <td>onPrevious</td>
       <td>Function</td>

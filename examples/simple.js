@@ -17,7 +17,7 @@ webpackJsonp([1],{
 	
 	var _rcWizard2 = _interopRequireDefault(_rcWizard);
 	
-	var _react = __webpack_require__(6);
+	var _react = __webpack_require__(5);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
