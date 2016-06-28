@@ -288,7 +288,7 @@
 	  className: _react.PropTypes.string,
 	  children: _react.PropTypes.array.isRequired,
 	  locale: _react.PropTypes.object.isRequired,
-	  displayKey: _react.PropTypes.string.isRequired,
+	  displayKey: _react.PropTypes.string,
 	  onDone: _react.PropTypes.func
 	};
 	Wizard.defaultProps = {
