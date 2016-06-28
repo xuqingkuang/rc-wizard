@@ -1,0 +1,21 @@
+@hoverColor: #57c5f7;
+@activeColor: #2baee9;
+
+.rc-wizarad-buttons > button {
+  color: #666;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+  margin: 0 2px;
+  outline: none;
+
+  &:hover {
+    border-color: @hoverColor;
+    color: @hoverColor;
+  }
+
+  &:active {
+    background-color: @hoverColor;
+    color: white;
+  }
+}

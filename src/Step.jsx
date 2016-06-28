@@ -5,10 +5,26 @@ import Locale from './locale/zh_CN';
 
 export default class Step extends Component {
 
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+    ]).isRequired,
+    style: PropTypes.object,
+    locale: PropTypes.object,
+    orignalKey: PropTypes.string,
+    displayKey: PropTypes.string,
+    isFirst: PropTypes.bool,
+    isLast: PropTypes.bool,
+    onPrevious: PropTypes.func,
+    onNext: PropTypes.func,
+    onDone: PropTypes.func,
+  }
+
   static defaultProps = {
     locale: Locale,
     displayKey: undefined,
-  };
+  }
 
   renderButtons() {
     const {
@@ -65,7 +81,7 @@ export default class Step extends Component {
     }
 
     return (
-      <div className="buttons-container">
+      <div className="rc-wizarad-buttons">
         {buttons}
       </div>
     );
@@ -89,16 +105,3 @@ export default class Step extends Component {
     );
   }
 }
-
-Step.propTypes = {
-  children: PropTypes.element.isRequired,
-  style: PropTypes.object.isRequired,
-  locale: PropTypes.object.isRequired,
-  orignalKey: PropTypes.string.isRequired,
-  displayKey: PropTypes.string.isRequired,
-  isFirst: PropTypes.bool,
-  isLast: PropTypes.bool,
-  onPrevious: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  onDone: PropTypes.func.isRequired,
-};

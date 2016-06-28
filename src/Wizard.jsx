@@ -1,11 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import Locale from './locale/zh_CN';
+require('./Wizard.less');
 
 const noop = () => {};
 const PREVIOUS = 'previous';
 const NEXT = 'next';
 
 export default class Wizard extends Component {
+
+  static propTypes = {
+    id: PropTypes.string,
+    className: PropTypes.string,
+    children: PropTypes.array.isRequired,
+    locale: PropTypes.object.isRequired,
+    displayKey: PropTypes.string.isRequired,
+    onDone: PropTypes.func,
+  }
 
   static defaultProps = {
     className: 'wizard',
@@ -90,12 +100,3 @@ export default class Wizard extends Component {
   }
 
 }
-
-Wizard.propTypes = {
-  id: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.element.isRequired,
-  locale: PropTypes.object.isRequired,
-  displayKey: PropTypes.string.isRequired,
-  onDone: PropTypes.func,
-};

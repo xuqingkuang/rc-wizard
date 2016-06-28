@@ -1,3 +1,3 @@
 // export this package's api
-import RcWizard from './src/';
-export default RcWizard;
+export default from './src';
+export * from './src/';

@@ -1,5 +1,6 @@
 // export this package's api
 import Wizard from './Wizard';
-import Step from './Step';
-Wizard.Step = Step;
+import StepComponent from './Step';
+Wizard.Step = StepComponent;
 export default Wizard;
+export const Step = StepComponent;
