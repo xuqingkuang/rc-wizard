@@ -1,8 +1,9 @@
 // use jsx to render html, do not modify simple.html
 
-import Wizard from 'rc-wizard';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Wizard from 'rc-wizard';
+require('rc-wizard/assets/index.less');
 
 const Test = () => {
   return (

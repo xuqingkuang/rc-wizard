@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Locale from './locale/zh_CN';
-require('./Wizard.less');
 
 const noop = () => {};
 const PREVIOUS = 'previous';
