@@ -13,7 +13,7 @@ export default class Wizard extends Component {
     className: PropTypes.string,
     children: PropTypes.array.isRequired,
     locale: PropTypes.object.isRequired,
-    displayKey: PropTypes.string.isRequired,
+    displayKey: PropTypes.string,
     onDone: PropTypes.func,
   }
 
