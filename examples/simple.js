@@ -13,19 +13,21 @@ webpackJsonp([1],{
 
 	'use strict';
 	
-	var _rcWizard = __webpack_require__(2);
-	
-	var _rcWizard2 = _interopRequireDefault(_rcWizard);
-	
-	var _react = __webpack_require__(5);
+	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(46);
+	var _reactDom = __webpack_require__(39);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _rcWizard = __webpack_require__(169);
+	
+	var _rcWizard2 = _interopRequireDefault(_rcWizard);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(175); // use jsx to render html, do not modify simple.html
 	
 	var Test = function Test() {
 	  return _react2.default.createElement(
@@ -49,7 +51,7 @@ webpackJsonp([1],{
 	      'I\'m the third page.'
 	    )
 	  );
-	}; // use jsx to render html, do not modify simple.html
+	};
 	
 	_reactDom2.default.render(_react2.default.createElement(Test, null), document.getElementById('__react-content'));
 
