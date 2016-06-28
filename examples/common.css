@@ -1,0 +1,18 @@
+.rc-wizarad-buttons > button {
+  color: #666;
+  background-color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+  margin: 0 2px;
+  outline: none;
+}
+.rc-wizarad-buttons > button:hover {
+  border-color: #57c5f7;
+  color: #57c5f7;
+}
+.rc-wizarad-buttons > button:active {
+  background-color: #57c5f7;
+  color: white;
+}
+
+/*# sourceMappingURL=common.css.map*/
