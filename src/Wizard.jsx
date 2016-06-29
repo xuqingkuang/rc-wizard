@@ -26,35 +26,41 @@ export default class Wizard extends Component {
   constructor(props) {
     super(props);
     const { children } = props;
-    this.childrenKeys = [];
+    let childrenKeys = [];
     if (children.length > 0) {
-      this.childrenKeys = children.map((child) => {
-        return child.key;
-      });
+      childrenKeys = (this.getChildrenKeys(children));
     }
     let displayingKey = props.displayKey;
     if (!displayingKey) {
       displayingKey = children[0].key;
     }
-    this.state = { displayingKey };
+    this.state = { childrenKeys, displayingKey };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps) {
-      const newState = {};
-      if (nextProps.displayKey !== this.props.displayKey) {
-        newState.displayKey = nextProps.displayKey;
-      }
-      this.setState(newState);
+    const childrenKeys = this.getChildrenKeys(nextProps.children);
+    const newState = { childrenKeys };
+    if (childrenKeys.indexOf(this.state.displayingKey) < 0) {
+      newState.displayKey = childrenKeys[0];
     }
+    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayKey) {
+      newState.displayKey = nextProps.displayKey;
+    }
+    this.setState(newState);
+  }
+
+  getChildrenKeys(children) {
+    return children.filter((child) => {
+      return child;
+    }).map((child) => { return child.key; });
   }
 
   handleSteps(action, callback) {
-    const index = this.childrenKeys.indexOf(this.state.displayingKey);
+    const index = this.state.childrenKeys.indexOf(this.state.displayingKey);
     if (index < 0) {
       return console.error(
         `Current key ${this.state.displayingKey} seems\
- got mistake, we have ${this.childrenKeys}`
+ got mistake, we have ${this.state.childrenKeys}`
       );
     }
     let nextKey;
@@ -62,13 +68,13 @@ export default class Wizard extends Component {
       if (index === 0) {
         return this.state.displayingKey;
       }
-      nextKey = this.childrenKeys[index - 1];
+      nextKey = this.state.childrenKeys[index - 1];
     }
     if (action === NEXT) {
-      if (index === this.childrenKeys.length - 1) {
+      if (index === this.state.childrenKeys.length - 1) {
         return this.state.displayingKey;
       }
-      nextKey = this.childrenKeys[index + 1];
+      nextKey = this.state.childrenKeys[index + 1];
     }
     this.setState({
       displayingKey: nextKey,
@@ -80,13 +86,13 @@ export default class Wizard extends Component {
 
   renderPage(child, index, onDone) {
     const { onPrevious, onNext } = child.props;
-    const keyIndex = this.childrenKeys.indexOf(child.key);
+    const keyIndex = this.state.childrenKeys.indexOf(child.key);
     const newChildProps = {
       orignalKey: child.key,
       displayKey: this.state.displayingKey,
       locale: this.props.locale,
       isFirst: keyIndex === 0,
-      isLast: keyIndex === this.childrenKeys.length - 1,
+      isLast: keyIndex === this.state.childrenKeys.length - 1,
       onPrevious: () => { this.handleSteps(PREVIOUS, onPrevious); },
       onNext: () => { this.handleSteps(NEXT, onNext); },
       onDone,

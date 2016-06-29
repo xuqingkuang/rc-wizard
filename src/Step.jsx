@@ -26,6 +26,23 @@ export default class Step extends Component {
     displayKey: undefined,
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayKey: props.displayKey,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const newState = {};
+    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayKey) {
+      newState.displayKey = nextProps.displayKey;
+    }
+    if (Object.keys(newState).length) {
+      this.setState(newState);
+    }
+  }
+
   renderButtons() {
     const {
       locale,
@@ -88,7 +105,8 @@ export default class Step extends Component {
   }
 
   render() {
-    const { displayKey, children } = this.props;
+    const { displayKey } = this.state;
+    const { children } = this.props;
     let style = { display: 'none' };
     if (displayKey === this.props.orignalKey) {
       style = { display: 'block' };
