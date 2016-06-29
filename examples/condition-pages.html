@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>selected-step.js - example - rc-wizard@0.0.8</title>
+  <title>condition-pages.js - example - rc-wizard@0.0.8</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -266,30 +266,56 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
     <div class="highlight"><pre><code language="js"><span class="hljs-comment">// use jsx to render html, do not modify simple.html</span>
 
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> Wizard <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-wizard'</span>;
 <span class="hljs-built_in">require</span>(<span class="hljs-string">'rc-wizard/assets/index.css'</span>);
 
-<span class="hljs-keyword">const</span> Test = () =&gt; {
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Wizard</span>
-      <span class="hljs-attribute">id</span>=<span class="hljs-value">"selected-step-test"</span>
-      <span class="hljs-attribute">onDone</span>=<span class="hljs-value">{()</span> =&gt;</span> { alert('Wizard is done'); }}
-      displayKey="2"
-    &gt;
-      <span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"1"</span>&gt;</span>
-        I'm the first page.
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"2"</span>&gt;</span>
-        I'm the default displaying second page.
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"3"</span>&gt;</span>
-        I'm the third page.
-      <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard</span>&gt;</span>
-  )</span>;
-};
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+
+  constructor(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {
+      condition: <span class="hljs-literal">true</span>,
+    };
+  }
+
+  changeChildren() {
+    <span class="hljs-keyword">const</span> condition = !<span class="hljs-keyword">this</span>.state.condition;
+    <span class="hljs-keyword">this</span>.setState({ condition });
+  }
+
+  renderConditionPage() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.condition) {
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"2"</span>&gt;</span>
+          I am the second page.
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
+      )</span>;
+    }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{()</span> =&gt;</span> {this.changeChildren();}}&gt;
+          Toggle display second page.
+        <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Wizard</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"test"</span> <span class="hljs-attribute">onDone</span>=<span class="hljs-value">{()</span> =&gt;</span> { alert('Wizard is done'); }}&gt;
+          <span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"1"</span>&gt;</span>
+            I am the first page.
+          <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
+          {
+            this.renderConditionPage()
+          }
+          <span class="hljs-tag">&lt;<span class="hljs-title">Wizard.Step</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"3"</span>&gt;</span>
+            I am the third page.
+          <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard.Step</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">Wizard</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+  }
+}
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Test</span> /&gt;</span>, document.getElementById('__react-content'));
 </span></code></pre></div>
@@ -302,7 +328,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-t
   </a>
   
   <script src="common.js?nowrap"></script>
-  <script src="selected-step.js?nowrap"></script>
+  <script src="condition-pages.js?nowrap"></script>
 </body>
 
 </html>

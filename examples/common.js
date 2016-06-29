@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		2:0
+/******/ 		3:0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 /******/
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"selected-step","1":"simple"}[chunkId]||chunkId) + ".js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"condition-pages","1":"selected-step","2":"simple"}[chunkId]||chunkId) + ".js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -20488,47 +20488,55 @@
 	
 	    var children = props.children;
 	
-	    _this.childrenKeys = [];
+	    var childrenKeys = [];
 	    if (children.length > 0) {
-	      _this.childrenKeys = children.map(function (child) {
-	        return child.key;
-	      });
+	      childrenKeys = _this.getChildrenKeys(children);
 	    }
 	    var displayingKey = props.displayKey;
 	    if (!displayingKey) {
 	      displayingKey = children[0].key;
 	    }
-	    _this.state = { displayingKey: displayingKey };
+	    _this.state = { childrenKeys: childrenKeys, displayingKey: displayingKey };
 	    return _this;
 	  }
 	
 	  Wizard.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	    if (nextProps) {
-	      var newState = {};
-	      if (nextProps.displayKey !== this.props.displayKey) {
-	        newState.displayKey = nextProps.displayKey;
-	      }
-	      this.setState(newState);
+	    var childrenKeys = this.getChildrenKeys(nextProps.children);
+	    var newState = { childrenKeys: childrenKeys };
+	    if (childrenKeys.indexOf(this.state.displayingKey) < 0) {
+	      newState.displayKey = childrenKeys[0];
 	    }
+	    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayKey) {
+	      newState.displayKey = nextProps.displayKey;
+	    }
+	    this.setState(newState);
+	  };
+	
+	  Wizard.prototype.getChildrenKeys = function getChildrenKeys(children) {
+	    return children.filter(function (child) {
+	      return child;
+	    }).map(function (child) {
+	      return child.key;
+	    });
 	  };
 	
 	  Wizard.prototype.handleSteps = function handleSteps(action, callback) {
-	    var index = this.childrenKeys.indexOf(this.state.displayingKey);
+	    var index = this.state.childrenKeys.indexOf(this.state.displayingKey);
 	    if (index < 0) {
-	      return console.error('Current key ' + this.state.displayingKey + ' seems got mistake, we have ' + this.childrenKeys);
+	      return console.error('Current key ' + this.state.displayingKey + ' seems got mistake, we have ' + this.state.childrenKeys);
 	    }
 	    var nextKey = void 0;
 	    if (action === PREVIOUS) {
 	      if (index === 0) {
 	        return this.state.displayingKey;
 	      }
-	      nextKey = this.childrenKeys[index - 1];
+	      nextKey = this.state.childrenKeys[index - 1];
 	    }
 	    if (action === NEXT) {
-	      if (index === this.childrenKeys.length - 1) {
+	      if (index === this.state.childrenKeys.length - 1) {
 	        return this.state.displayingKey;
 	      }
-	      nextKey = this.childrenKeys[index + 1];
+	      nextKey = this.state.childrenKeys[index + 1];
 	    }
 	    this.setState({
 	      displayingKey: nextKey
@@ -20545,13 +20553,13 @@
 	    var _onPrevious = _child$props.onPrevious;
 	    var _onNext = _child$props.onNext;
 	
-	    var keyIndex = this.childrenKeys.indexOf(child.key);
+	    var keyIndex = this.state.childrenKeys.indexOf(child.key);
 	    var newChildProps = {
 	      orignalKey: child.key,
 	      displayKey: this.state.displayingKey,
 	      locale: this.props.locale,
 	      isFirst: keyIndex === 0,
-	      isLast: keyIndex === this.childrenKeys.length - 1,
+	      isLast: keyIndex === this.state.childrenKeys.length - 1,
 	      onPrevious: function onPrevious() {
 	        _this2.handleSteps(PREVIOUS, _onPrevious);
 	      },
@@ -20575,7 +20583,9 @@
 	    return _react2.default.createElement(
 	      'div',
 	      { id: id, className: className },
-	      children.map(function (child, index) {
+	      children.filter(function (child) {
+	        return child;
+	      }).map(function (child, index) {
 	        return _this3.renderPage(child, index, onDone);
 	      })
 	    );
@@ -20654,11 +20664,26 @@
 	var Step = function (_Component) {
 	  _inherits(Step, _Component);
 	
-	  function Step() {
+	  function Step(props) {
 	    _classCallCheck(this, Step);
 	
-	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+	
+	    _this.state = {
+	      displayKey: props.displayKey
+	    };
+	    return _this;
 	  }
+	
+	  Step.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    var newState = {};
+	    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayKey) {
+	      newState.displayKey = nextProps.displayKey;
+	    }
+	    if (Object.keys(newState).length) {
+	      this.setState(newState);
+	    }
+	  };
 	
 	  Step.prototype.renderButtons = function renderButtons() {
 	    var _props = this.props;
@@ -20706,9 +20731,8 @@
 	  };
 	
 	  Step.prototype.render = function render() {
-	    var _props2 = this.props;
-	    var displayKey = _props2.displayKey;
-	    var children = _props2.children;
+	    var displayKey = this.state.displayKey;
+	    var children = this.props.children;
 	
 	    var style = { display: 'none' };
 	    if (displayKey === this.props.orignalKey) {
