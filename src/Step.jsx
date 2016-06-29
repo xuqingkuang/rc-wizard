@@ -81,7 +81,7 @@ export default class Step extends Component {
     }
 
     return (
-      <div className="rc-wizarad-buttons">
+      <div className="rc-wizard-buttons">
         {buttons}
       </div>
     );

@@ -39,6 +39,16 @@ export default class Wizard extends Component {
     this.state = { displayingKey };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps) {
+      const newState = {};
+      if (nextProps.displayKey !== this.props.displayKey) {
+        newState.displayKey = nextProps.displayKey;
+      }
+      this.setState(newState);
+    }
+  }
+
   handleSteps(action, callback) {
     const index = this.childrenKeys.indexOf(this.state.displayingKey);
     if (index < 0) {
