@@ -20502,6 +20502,16 @@
 	    return _this;
 	  }
 	
+	  Wizard.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if (nextProps) {
+	      var newState = {};
+	      if (nextProps.displayKey !== this.props.displayKey) {
+	        newState.displayKey = nextProps.displayKey;
+	      }
+	      this.setState(newState);
+	    }
+	  };
+	
 	  Wizard.prototype.handleSteps = function handleSteps(action, callback) {
 	    var index = this.childrenKeys.indexOf(this.state.displayingKey);
 	    if (index < 0) {
@@ -20690,7 +20700,7 @@
 	
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'rc-wizarad-buttons' },
+	      { className: 'rc-wizard-buttons' },
 	      buttons
 	    );
 	  };

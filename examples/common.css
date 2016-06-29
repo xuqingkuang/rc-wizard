@@ -1,4 +1,4 @@
-.rc-wizarad-buttons > button {
+.rc-wizard-buttons > button {
   color: #666;
   background-color: white;
   border: 1px solid #666;
@@ -6,11 +6,11 @@
   margin: 0 2px;
   outline: none;
 }
-.rc-wizarad-buttons > button:hover {
+.rc-wizard-buttons > button:hover {
   border-color: #57c5f7;
   color: #57c5f7;
 }
-.rc-wizarad-buttons > button:active {
+.rc-wizard-buttons > button:active {
   background-color: #57c5f7;
   color: white;
 }
