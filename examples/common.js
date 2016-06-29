@@ -20504,10 +20504,10 @@
 	    var childrenKeys = this.getChildrenKeys(nextProps.children);
 	    var newState = { childrenKeys: childrenKeys };
 	    if (childrenKeys.indexOf(this.state.displayingKey) < 0) {
-	      newState.displayKey = childrenKeys[0];
+	      newState.displayingKey = childrenKeys[0];
 	    }
-	    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayKey) {
-	      newState.displayKey = nextProps.displayKey;
+	    if (nextProps.displayKey && nextProps.displayKey !== this.state.displayingKey) {
+	      newState.displayingKey = nextProps.displayKey;
 	    }
 	    this.setState(newState);
 	  };
