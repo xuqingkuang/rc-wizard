@@ -100,7 +100,9 @@ export default class Wizard extends Component {
     return (
       <div id={id} className={className}>
         {
-          children.map((child, index) => {
+          children.filter((child) => {
+            return child;
+          }).map((child, index) => {
             return this.renderPage(child, index, onDone);
           })
         }
